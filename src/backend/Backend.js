@@ -7,25 +7,21 @@ var config = {
   storageBucket: "",
   messagingSenderId: "214965186577"
 };
+
 firebase.initializeApp(config);
-console.log(firebase);
+
 // Initialize Cloud Firestore through Firebase
 var ingredients, ing1;
-var list_recipes = [];
-var promises = [];
 function onload() {
   ingredients = document.getElementById('ing');
   var recipeRef = firebase.database().ref('/recipes/');
-  //nsole.log(ref);
   recipeRef.once('value').then(function (snapshot) {
-    console.log(snapshot.val());
     var childData = [];
     snapshot.forEach(function (childSnapshot) {
       childData.push(childSnapshot.val());
       return childData;
     });
   }).then(function(childData){
-    console.log(childData);
   });
 }
 const getIng = () => {}
@@ -39,6 +35,7 @@ const getIng = ()=> {
     console.log(childData.ingredients);
   },3000);
 }
+
 var list_recipes = {
 {
   "recipes" : {
@@ -72,24 +69,19 @@ var list_recipes = {
 }
 }
 }
+
 list_recipes = JSON.parse(JSON.stringify(list_recipes));
-console.log(list_recipes);
-// list_recipes.forEach(function(element) {
-//   console.log(element['0'].msg);
+
 var counter = 0;
 var ingg =childData.ingredients;
-console.log('data presented');
 for(var i=0; i<array_ing.length; i++){
   for(var j=0; j<list_recipes.length; j++){
-    console.log(array_ing.length + " " + list_recipes.length);
-    console.log(i + " " + j);
     if(array_ing[i] == ingg[j]){
-      console.log(array_ing[i] + " " + ingg[j]);
       counter++;
     }
   }
-  console.log(counter);
 });
+
 if(counter >= 3){
   list_recipes.push({
     name: childData.food_name,
@@ -100,6 +92,5 @@ if(counter >= 3){
     sug_count: childData.sugar_count,
     allergens: childData.allergens
   })
-  console.log(list_recipes);
 }
 }

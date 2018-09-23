@@ -34,7 +34,7 @@ class RecipeCard extends React.Component {
         <CardHeader
           avatar={
             <Avatar aria-label="Recipe" className={classes.avatar}>
-              R
+              {recipe.food_name.substring(0, 1)}
             </Avatar>
           }
           action={
