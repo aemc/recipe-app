@@ -14,5 +14,9 @@ export const styles = theme => ({
 
   cardPadding: {
     padding: 16
+  },
+
+  defaultMsg: {
+    padding: 32
   }
 });

@@ -8,15 +8,22 @@ import { styles } from "./Dashboard.css";
 import SearchAppBar from "../SearchAppbar/SearchAppbar";
 import RecipeCard from "../RecipeCards/RecipeCards";
 import { list_recipes } from "../../config/RecipeList";
+import Typography from "@material-ui/core/Typography/Typography";
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { expanded: false };
+    this.state = { expanded: false, display: false };
   }
 
-  componentDidMount() {}
+  handleBooleanToggle = event => {
+    if (event.target.value === 'cheese') {
+      this.setState({
+        display: true
+      })
+    }
+  };
 
   render() {
     const { classes } = this.props;
@@ -24,26 +31,35 @@ class Dashboard extends React.Component {
 
     return (
       <div className={classes.root}>
-        <SearchAppBar />
+        <SearchAppBar handleBooleanToggle={this.handleBooleanToggle} />
 
         <div className={classes.toolbar} />
 
-        <Grid container alignContent="center">
-          {recipes.map((recipe, index) => {
-            return (
-              <Grid
-                item
-                key={index}
-                className={classes.cardPadding}
-                xs={12}
-                sm={6}
-                md={4}
-              >
-                <RecipeCard recipe={recipe} />
-              </Grid>
-            );
-          })}
-        </Grid>
+        {this.state.display && (
+          <Grid container alignContent="center">
+            {recipes.map((recipe, index) => {
+              return (
+                <Grid
+                  item
+                  key={index}
+                  className={classes.cardPadding}
+                  xs={12}
+                  sm={6}
+                  md={4}
+                >
+                  <RecipeCard recipe={recipe} />
+                </Grid>
+              );
+            })}
+          </Grid>
+        )}
+        {!this.state.display &&
+          <div className={classes.defaultMsg}>
+            <Typography>
+              No Recipes To Show
+            </Typography>
+          </div>
+        }
       </div>
     );
   }

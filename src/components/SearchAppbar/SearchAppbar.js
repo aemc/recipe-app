@@ -45,6 +45,7 @@ function SearchAppBar(props) {
                 root: classes.inputRoot,
                 input: classes.inputInput
               }}
+              onChange={props.handleBooleanToggle}
             />
           </div>
         </Toolbar>

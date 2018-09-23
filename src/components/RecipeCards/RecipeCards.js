@@ -54,8 +54,8 @@ class RecipeCard extends React.Component {
           <Typography>
             Ingredients:
           </Typography>
-          {recipe.ingredients.map(ingredient => (
-            <Typography component="p">
+          {recipe.ingredients.map((ingredient, index) => (
+            <Typography component="p" key={index}>
               {ingredient}
             </Typography>
           ))}
