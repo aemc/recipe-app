@@ -31,7 +31,7 @@ function SearchAppBar(props) {
             color="inherit"
             noWrap
           >
-            Recipe List
+            Calor.io
           </Typography>
           <div className={classes.grow} />
           <div className={classes.search}>
