@@ -1,15 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App/App';
-import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { jss, JssProvider } from "react-jss";
 
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import { theme } from './config/muiTheme';
+import "./index.css";
+import App from "./components/App/App";
+import registerServiceWorker from "./registerServiceWorker";
+import { theme } from "./config/muiTheme";
+
+import { createGenerateClassName } from "@material-ui/core/styles";
+
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+
+const generateClassName = createGenerateClassName();
 
 ReactDOM.render(
-  <MuiThemeProvider theme={theme}>
-    <App />
-  </MuiThemeProvider>
-  , document.getElementById('root'));
+  <JssProvider jss={jss} generateClassName={generateClassName}>
+    <MuiThemeProvider theme={theme}>
+      <App />
+    </MuiThemeProvider>
+  </JssProvider>,
+  document.getElementById("root")
+);
 registerServiceWorker();

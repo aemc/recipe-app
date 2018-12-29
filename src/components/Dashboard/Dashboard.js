@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography/Typography";
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   grow: {
     flexGrow: 1
@@ -29,17 +29,16 @@ const styles = theme => ({
 });
 
 class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    expanded: false,
+    display: false
+  };
 
-    this.state = { expanded: false, display: false };
-  }
-
-  handleBooleanToggle = event => {
-    if (event.target.value === 'cheese') {
+  handleBooleanToggle = e => {
+    if (e.target.value === "cheese") {
       this.setState({
         display: true
-      })
+      });
     }
   };
 
@@ -70,16 +69,18 @@ class Dashboard extends React.Component {
             })}
           </Grid>
         )}
-        {!this.state.display &&
+        {!this.state.display && (
           <div className={classes.defaultMsg}>
-            <Typography>
-              No Recipes To Show
-            </Typography>
+            <Typography>No Recipes To Show</Typography>
           </div>
-        }
+        )}
       </div>
     );
   }
 }
+
+Dashboard.propTypes = {
+  classes: PropTypes.obj
+};
 
 export default withStyles(styles)(Dashboard);
