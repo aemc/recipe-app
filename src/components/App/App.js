@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import "./App.css";
 import Dashboard from "../Dashboard/Dashboard";
 import { Redirect } from "react-router";
+
+import { withStyles } from "@material-ui/core";
+
+const styles = theme => ({
+  textAlign: "center"
+});
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className={classes.App}>
         <BrowserRouter>
           <Switch>
             <Route
@@ -25,4 +30,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
