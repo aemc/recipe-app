@@ -7,13 +7,17 @@ import { Redirect } from "react-router";
 import { withStyles } from "@material-ui/core";
 
 const styles = theme => ({
-  textAlign: "center"
+  container: {
+    textAlign: "center"
+  }
 });
 
 class App extends Component {
   render() {
+    const { classes } = this.props;
+
     return (
-      <div className={classes.App}>
+      <div className={classes.container}>
         <BrowserRouter>
           <Switch>
             <Route
