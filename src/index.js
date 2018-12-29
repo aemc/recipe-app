@@ -20,4 +20,5 @@ ReactDOM.render(
   </JssProvider>,
   document.getElementById("root")
 );
+
 registerServiceWorker();
