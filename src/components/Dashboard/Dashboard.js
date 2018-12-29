@@ -44,6 +44,7 @@ class Dashboard extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const {display} = this.state;
 
     return (
       <div className={classes.root}>
@@ -51,7 +52,7 @@ class Dashboard extends React.Component {
 
         <div className={classes.toolbar} />
 
-        {this.state.display && (
+        {display && (
           <Grid container alignContent="center">
             {list_recipes.map((recipe, index) => {
               return (
@@ -69,7 +70,7 @@ class Dashboard extends React.Component {
             })}
           </Grid>
         )}
-        {!this.state.display && (
+        {!display && (
           <div className={classes.defaultMsg}>
             <Typography>No Recipes To Show</Typography>
           </div>
