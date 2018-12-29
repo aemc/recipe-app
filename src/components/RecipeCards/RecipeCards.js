@@ -57,6 +57,7 @@ class RecipeCard extends React.Component {
 
   render() {
     const { classes, recipe } = this.props;
+    const { expanded } = this.state;
 
     return (
       <Card className={classes.card}>
@@ -96,16 +97,16 @@ class RecipeCard extends React.Component {
           </IconButton>
           <IconButton
             className={classNames(classes.expand, {
-              [classes.expandOpen]: this.state.expanded
+              [classes.expandOpen]: expanded
             })}
             onClick={this.handleExpandClick}
-            aria-expanded={this.state.expanded}
+            aria-expanded={expanded}
             aria-label="Show more"
           >
             <ExpandMoreIcon />
           </IconButton>
         </CardActions>
-        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph variant="body2">
               Method:

@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const {display} = this.state;
+    const { display } = this.state;
 
     return (
       <div className={classes.root}>
