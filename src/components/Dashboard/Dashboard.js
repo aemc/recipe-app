@@ -4,11 +4,29 @@ import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid/Grid";
 import { withStyles } from "@material-ui/core/styles";
 
-import { styles } from "./Dashboard.css";
 import SearchAppBar from "../SearchAppbar/SearchAppbar";
 import RecipeCard from "../RecipeCards/RecipeCards";
 import { list_recipes } from "../../config/RecipeList";
 import Typography from "@material-ui/core/Typography/Typography";
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  grow: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20
+  },
+  cardPadding: {
+    padding: 16
+  },
+  defaultMsg: {
+    padding: 32
+  }
+});
 
 class Dashboard extends React.Component {
   constructor(props) {
